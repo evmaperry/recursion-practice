@@ -363,7 +363,14 @@ var letterTally = function(str, obj={}){
 // elements should not be changed.
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
-var compress = function(list) {
+var compress = function(array, returnArray=[]) {
+  if(!array.length){
+    return returnArray;
+  }
+  if (array[0] !== array[1]){
+    returnArray.push(array[0]);
+  }
+  return compress(array.slice(1), returnArray);
 };
 
 // 32. Augment every element in a list with a new value where each element is an array
@@ -375,7 +382,15 @@ var augmentElements = function(array, aug) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
+var minimizeZeroes = function(array, returnArray=[]) {
+  if (!array.length){
+    return returnArray
+  }
+  if(array[0]===0 && array[1]===0){
+    return minimizeZeroes(array.slice(1), returnArray);
+  }
+  returnArray.push(array[0]);
+  return minimizeZeroes(array.slice(1), returnArray);
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
