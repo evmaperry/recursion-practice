@@ -194,13 +194,10 @@ var compareStr = function(str1, str2) {
   if (!str1.length && !str2.length){
     return true;
   }
-
   if(str1[0] !== str2[0]){
     return false;
   }
-
   return compareStr(str1.slice(1), str2.slice(1));
-  
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
@@ -233,7 +230,6 @@ var buildList = function(value, length, returnArray = []) {
   }
   returnArray.push(value);
   return buildList(value, length-1, returnArray);
-
 };
 
 // 19. Count the occurence of a value inside a list.
@@ -252,7 +248,11 @@ var countOccurrence = function(array, value, count = 0) {
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function(array, callback, output=[]) {
-  
+  if(!array.length){
+    return output;
+  }
+  output.push(callback(array[0]));
+  return rMap(array.slice(1), callback, output);
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
