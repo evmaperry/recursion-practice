@@ -227,13 +227,26 @@ var reverseArr = function (array, returnArray = []) {
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+var buildList = function(value, length, returnArray = []) {
+  if (length === 0){
+    return returnArray;
+  }
+  returnArray.push(value);
+  return buildList(value, length-1, returnArray);
+
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
+var countOccurrence = function(array, value, count = 0) {
+  if (!array.length){
+    return count;
+  }
+  if (array[0]===value){
+    count ++;
+  }
+  return countOccurrence(array.slice(1), value, count)
 };
 
 // 20. Write a recursive version of map.
