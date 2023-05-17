@@ -191,16 +191,38 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  if (!str1.length && !str2.length){
+    return true;
+  }
+
+  if(str1[0] !== str2[0]){
+    return false;
+  }
+
+  return compareStr(str1.slice(1), str2.slice(1));
+  
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+var createArray = function(str, returnArray = []){
+  if (str.length === 0){
+    return returnArray;
+  }
+  returnArray.push(str[0]);
+  return createArray(str.slice(1), returnArray)
 };
 
+
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (array, returnArray = []) {
+  if (!array.length){
+    return returnArray;
+  }
+  returnArray.unshift(array[0]);
+  return reverseArr(array.slice(1), returnArray)
 };
+
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
