@@ -90,7 +90,7 @@ var exponent = function(base, exp) {
     return base * exponent(base, exp - 1);
   }
   if (exp < 0){
-    return ( (1 / base) * exponent(base, exp + 1));
+    return Number(((1 / base) * exponent(base, exp + 1)).toString().substring(0,7));
   }
 };
 
