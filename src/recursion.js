@@ -397,6 +397,7 @@ var minimizeZeroes = function(array, returnArray=[]) {
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
+
 var alternateSign = function(array, returnArray = [], count = 0) {
   if(!array.length){
     return returnArray;
